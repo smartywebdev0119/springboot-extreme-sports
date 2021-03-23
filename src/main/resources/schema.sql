@@ -1,0 +1,49 @@
+-- schema for countries table
+CREATE TABLE IF NOT EXISTS countries
+(
+  ID int NOT NULL AUTO_INCREMENT,
+  COUNTRY_NAME       varchar(50),
+  PRIMARY KEY (ID)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- schema for regions table
+CREATE TABLE IF NOT EXISTS regions
+(
+  ID         int NOT NULL AUTO_INCREMENT,
+  REGION_NAME       varchar(50),
+  COUNTRY_ID int,
+  PRIMARY KEY (ID),
+  FOREIGN KEY (COUNTRY_ID) REFERENCES countries(ID) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- schema for destinations table
+CREATE TABLE IF NOT EXISTS destinations
+(
+  ID         int NOT NULL AUTO_INCREMENT,
+  DESTINATION_NAME       varchar(50),
+  REGION_ID int,
+  PRIMARY KEY (ID),
+  FOREIGN KEY (REGION_ID) REFERENCES regions(ID) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- schema for sport_type table
+CREATE TABLE IF NOT EXISTS sport_types
+(
+  ID         int NOT NULL AUTO_INCREMENT,
+ SPORT_NAME       varchar(50),
+  PRIMARY KEY (ID)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- schema for events_info table
+CREATE TABLE IF NOT EXISTS events_info
+(
+  ID         int NOT NULL AUTO_INCREMENT,
+  SPORT_TYPE_ID int,
+  PRICE_PER_DAY double,
+  DESTINATION_ID int,
+  BEGIN_DATE date,
+  END_DATE date,
+  PRIMARY KEY (ID),
+  FOREIGN KEY (SPORT_TYPE_ID) REFERENCES sport_types(ID) ON DELETE CASCADE,
+  FOREIGN KEY (DESTINATION_ID) REFERENCES destinations(ID) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
