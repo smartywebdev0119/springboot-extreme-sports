@@ -29,15 +29,15 @@ CREATE TABLE IF NOT EXISTS destinations
 -- schema for sport_type table
 CREATE TABLE IF NOT EXISTS sport_types
 (
-  ID         int NOT NULL AUTO_INCREMENT,
- SPORT_NAME       varchar(50),
+  ID int NOT NULL AUTO_INCREMENT,
+  SPORT_NAME varchar(50) NOT NULL,
   PRIMARY KEY (ID)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- schema for events_info table
 CREATE TABLE IF NOT EXISTS events_info
 (
-  ID         int NOT NULL AUTO_INCREMENT,
+  ID int NOT NULL AUTO_INCREMENT,
   SPORT_TYPE_ID int,
   PRICE_PER_DAY double,
   DESTINATION_ID int,
