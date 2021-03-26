@@ -2,4 +2,4 @@
 
 Spring REST Web Service for Extreme Sports enthusiasts.
 
-![Screenshot](dbschema.png)
+![Screenshot](extreme-sports-app/src/main/resources/images/dbschema.PNG)
