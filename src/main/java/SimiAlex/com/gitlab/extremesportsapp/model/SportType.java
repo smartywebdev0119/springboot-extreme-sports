@@ -1,4 +1,4 @@
-package SimiAlex.com.gitlab.extremesportsapp.dto;
+package SimiAlex.com.gitlab.extremesportsapp.model;
 
 import javax.persistence.*;
 import java.util.Objects;
@@ -11,17 +11,17 @@ public class SportType
     @Id
     @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     @Column(name = "SPORT_NAME", nullable = false)
     private String sportName;
 
     //methods
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

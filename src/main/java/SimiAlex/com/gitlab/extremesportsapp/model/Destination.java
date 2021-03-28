@@ -1,4 +1,4 @@
-package SimiAlex.com.gitlab.extremesportsapp.dto;
+package SimiAlex.com.gitlab.extremesportsapp.model;
 
 import javax.persistence.*;
 import java.util.Objects;
