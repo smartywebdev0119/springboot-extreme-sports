@@ -1,12 +1,12 @@
 package SimiAlex.com.gitlab.extremesportsapp.controllers;
 
 import SimiAlex.com.gitlab.extremesportsapp.model.SportType;
-import SimiAlex.com.gitlab.extremesportsapp.repositories.SportTypeRepository;
+import SimiAlex.com.gitlab.extremesportsapp.services.SportTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -15,8 +15,40 @@ import java.util.List;
 public class SportTypeController {
 
     @Autowired
-    private SportTypeRepository sportTypeRepository;
+    private SportTypeService sportTypeService;
 
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE,
+                 produces = MediaType.APPLICATION_JSON_VALUE )
+    public ResponseEntity<SportType> addSportType(@RequestBody SportType sportType)
+    {
+        return new ResponseEntity<SportType>(sportTypeService.addSportType(sportType), HttpStatus.CREATED);
+    }
 
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<SportType>> getSportTypes()
+    {
+        return new ResponseEntity<List<SportType>>(sportTypeService.findAllSportTypes(), HttpStatus.OK);
+    }
 
+    @GetMapping(path = "{id}")
+    public ResponseEntity<SportType> getSportType(@PathVariable Long id)
+    {
+        return new ResponseEntity<SportType>(sportTypeService.findSportTypeById(id), HttpStatus.OK);
+    }
+
+    @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE,
+                produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<SportType> updateSportType(@RequestBody SportType sportType)
+    {
+        SportType sportTypeTemp = sportTypeService.findSportTypeById(sportType.getId());
+        sportTypeTemp.setSportName(sportType.getSportName());
+        return new ResponseEntity<SportType>(sportTypeService.updateSportType(sportTypeTemp), HttpStatus.OK);
+    }
+
+    @DeleteMapping(path = "{id}")
+    public ResponseEntity<Void> deleteSportType(@PathVariable Long id)
+    {
+        sportTypeService.deleteSportType(id);
+        return new ResponseEntity<Void>(HttpStatus.OK);
+    }
 }
