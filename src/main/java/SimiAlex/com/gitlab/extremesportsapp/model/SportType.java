@@ -25,11 +25,11 @@ public class SportType
         this.id = id;
     }
 
-    public String getName() {
+    public String getSportName() {
         return sportName;
     }
 
-    public void setName(String name) {
+    public void setSportName(String name) {
         this.sportName = name;
     }
 
