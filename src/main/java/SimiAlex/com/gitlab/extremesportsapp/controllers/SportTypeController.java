@@ -42,13 +42,13 @@ public class SportTypeController {
     {
         SportType sportTypeTemp = sportTypeService.findSportTypeById(sportType.getId());
         sportTypeTemp.setSportName(sportType.getSportName());
-        return new ResponseEntity<SportType>(sportTypeService.updateSportType(sportTypeTemp), HttpStatus.OK);
+        return new ResponseEntity<SportType>(sportTypeService.updateSportType(sportTypeTemp), HttpStatus.NO_CONTENT);
     }
 
     @DeleteMapping(path = "{id}")
     public ResponseEntity<Void> deleteSportType(@PathVariable Long id)
     {
         sportTypeService.deleteSportType(id);
-        return new ResponseEntity<Void>(HttpStatus.OK);
+        return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
     }
 }

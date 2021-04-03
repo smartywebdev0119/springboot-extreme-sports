@@ -87,14 +87,14 @@ public class EventInfoController {
         eventInfo.setEndDate(eventInfoRequestModel.getEndDate());
 
         //update event info
-        return new ResponseEntity<EventInfo>(eventInfoService.updateEventInfo(eventInfo), HttpStatus.ACCEPTED);
+        return new ResponseEntity<EventInfo>(eventInfoService.updateEventInfo(eventInfo), HttpStatus.NO_CONTENT);
     }
 
     @DeleteMapping(path = "{id}")
     public ResponseEntity<Void> deleteEventInfo(@PathVariable Long id)
     {
         eventInfoService.deleteEventInfo(id);
-        return new ResponseEntity<Void>(HttpStatus.OK);
+        return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
     }
 
     @GetMapping(path = "search")
