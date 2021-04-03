@@ -29,11 +29,11 @@ public class Destination
         this.id = id;
     }
 
-    public String getName() {
+    public String getDestinationName() {
         return destinationName;
     }
 
-    public void setName(String name) {
+    public void setDestinationName(String name) {
         this.destinationName = name;
     }
 
