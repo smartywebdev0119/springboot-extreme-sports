@@ -29,11 +29,11 @@ public class Region
         this.id = id;
     }
 
-    public String getName() {
+    public String getRegionName() {
         return regionName;
     }
 
-    public void setName(String name) {
+    public void setRegionName(String name) {
         this.regionName = name;
     }
 
