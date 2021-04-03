@@ -25,11 +25,11 @@ public class Country
         this.id = id;
     }
 
-    public String getName() {
+    public String getCountryName() {
         return countryName;
     }
 
-    public void setName(String name) {
+    public void setCountryName(String name) {
         this.countryName = name;
     }
 
